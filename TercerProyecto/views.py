@@ -1,6 +1,7 @@
 from django.template import Template, Context
 from django.template import loader
 from datetime import datetime
+from django.shortcuts import render
 from django.http import HttpResponse
 
 def common(request):
@@ -15,3 +16,6 @@ def EnBlanco(self):
     
     documento = plantilla.render(miContexto)
     return HttpResponse(documento)
+
+loader.get_template('templates.html')
+

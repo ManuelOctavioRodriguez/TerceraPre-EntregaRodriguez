@@ -1,9 +1,9 @@
 from django.urls import path
-from Common import views
+from Common.views import Home, Usuarios, Textos, Comentarios
 
 urlpatterns = [
-    path('', views.Home),
-    path('Usuarios', views.Usuarios),
-    path('Textos', views.Textos),
-    path('Comentarios', views.Comentarios),
+    path('', Home),
+    path('Usuarios/', Usuarios),
+    path('Textos/', Textos),
+    path('Comentarios/', Comentarios),
 ]
