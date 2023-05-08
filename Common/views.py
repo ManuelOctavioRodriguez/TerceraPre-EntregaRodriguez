@@ -2,13 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 def Home(request):
-    return HttpResponse('Vista Home')
+    return render(request, 'Common/Home.html')
 
 def Usuarios(request):
-    return HttpResponse('Vista Usuarios')
+    return render(request, 'Common/Usuarios.html')
 
 def Textos(request):
-    return HttpResponse('Vista Textos')
+    return render(request, 'Common/Textos.html')
 
 def Comentarios(request):
-    return HttpResponse('Vistas Comentarios')
+    return render(request, 'Common/Comentarios.html')
