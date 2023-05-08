@@ -55,7 +55,7 @@ ROOT_URLCONF = 'TercerProyecto.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Users/manuo/OneDrive/TerceraEntrega/TercerProyecto/Plantillas'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from TercerProyecto.views import common
+from TercerProyecto.views import common, EnBlanco
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('manifesto/', common)
+    path('manifesto/', common),
+    path('enBlanco/', EnBlanco),
 ]
