@@ -4,10 +4,7 @@ from django.urls import reverse
 from django.http import HttpResponse
 
 def Index(request):
-    return render(request, 'Common/index.html')
-
-def Home(request):
-    return render(request, 'Common/Home.html')
+    return render(request, 'Common/Inicio.html')
 
 def Usuarios(request):
     return render(request, 'Common/Usuarios.html')
