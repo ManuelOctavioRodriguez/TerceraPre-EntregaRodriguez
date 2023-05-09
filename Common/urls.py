@@ -1,10 +1,9 @@
 from django.contrib import admin
 from django.urls import path
-from Common.views import Usuarios, Textos, Comentarios, Index
+from Common.views import Index, listaTextos, listaUsuarios
 
 urlpatterns = [
     path('', Index, name="Index"),
-    path('Usuarios/', Usuarios),
-    path('Textos/', Textos),
-    path('Comentarios/', Comentarios),
+    path('usuarios/', listaUsuarios),
+    path('textos/', listaTextos),
 ]
