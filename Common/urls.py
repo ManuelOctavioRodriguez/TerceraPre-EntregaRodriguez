@@ -4,7 +4,7 @@ from Common.views import Usuarios, Textos, Comentarios, Index
 
 urlpatterns = [
     path('', Index, name="Index"),
-    path('usuarios/', Usuarios),
-    path('textos/', Textos),
-    path('comentarios/', Comentarios),
+    path('Usuarios/', Usuarios),
+    path('Textos/', Textos),
+    path('Comentarios/', Comentarios),
 ]
