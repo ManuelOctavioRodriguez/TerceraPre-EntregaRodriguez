@@ -50,7 +50,32 @@ def crearUsuario(request):
             formulario = UsuariosForm()
             http_response = render(
             request=request,
-            template_name='Common/crear_usuario.html',
+            template_name='Common/crearUsuario.html',
+            context={'formulario': formulario}
+        )
+        return http_response
+    
+def crearTexto(request):
+    if request.method == "POST":
+        formulario = TextosForm(request.POST)
+
+        if formulario.is_valid():
+            data = formulario.cleaned_data
+            titulo = data["titulo"]
+            texto = data["texto"]
+            image = data["image"]
+            autor = data["autor"]
+            texto = Textos(titulo=titulo, texto=texto, image=image, autor=autor)
+            texto.save()  
+
+            url_exitosa = reverse('listaTextos') 
+            return redirect(url_exitosa)
+        
+        else: 
+            formulario = TextosForm()
+            http_response = render(
+            request=request,
+            template_name='Common/crearTexto.html',
             context={'formulario': formulario}
         )
         return http_response
