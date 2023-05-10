@@ -9,6 +9,9 @@ class Usuarios(models.Model):
     pais = models.CharField(max_length=20)
     correo = models.EmailField()
     
+    def __str__(self):
+        return f"{self.nombre}, {self.apellido}, Usuario: {self.usuario}"
+    
 class Textos(models.Model):
     titulo = models.CharField(max_length=40)
     texto = models.CharField(max_length=480)
