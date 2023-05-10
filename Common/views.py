@@ -1,8 +1,8 @@
 from .models import Usuarios, Textos, Comentarios
 from .forms import UsuariosForm, TextosForm
 from django.shortcuts import render, redirect
-from django.urls import reverse
 from django.http import HttpResponse
+from django.urls import reverse
 
 def Index(request):
     contexto = {}
