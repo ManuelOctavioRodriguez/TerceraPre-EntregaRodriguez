@@ -58,7 +58,7 @@ def buscarUsuario(request):
         busqueda = data["busqueda"]
         usuario = Usuarios.objects.filter(nombre__icontains=busqueda)
         contexto = {
-            "usuario": Usuarios
+            "usuarios": usuario
         }
         http_response = render(
             request=request,
@@ -71,9 +71,9 @@ def buscarTexto(request):
     if request.method == "POST":
         data = request.POST
         busqueda = data["busqueda"]
-        texto = Textos.objects.filter(nombre__icontains=busqueda)
+        textos = Textos.objects.filter(titulo__icontains=busqueda)
         contexto = {
-            "texto": Textos
+            "textos": textos
         }
         http_response = render(
             request=request,
