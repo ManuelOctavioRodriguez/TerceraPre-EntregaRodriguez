@@ -31,51 +31,53 @@ def listaTextos(request):
     return http_response
 
 def crearUsuario(request):
+    formulario = UsuariosForm()
     if request.method == "POST":
         formulario = UsuariosForm(request.POST)
-
         if formulario.is_valid():
-            data = formulario.cleaned_data
-            nombre = data["nombre"]
-            apellido = data["apellido"]
-            pais = data["pais"]
-            correo = data["correo"]
-            usuario = Usuarios(nombre=nombre, apellido=apellido, pais=pais, correo=correo)
-            usuario.save()  
-
-            url_exitosa = reverse('listaUsuarios') 
+            formulario.save()
+            url_exitosa = reverse('listaUsuarios')
             return redirect(url_exitosa)
-        
-        else: 
-            formulario = UsuariosForm()
-            http_response = render(
+    contexto = {'formulario': formulario}
+    return render(request, 'Common/crearUsuario.html', context=contexto)
+
+def crearTexto(request):
+    formulario = TextosForm()
+    if request.method == "POST":
+        formulario = TextosForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            url_exitosa = reverse('listaTextos')
+            return redirect(url_exitosa)
+    contexto = {'formulario': formulario}
+    return render(request, 'Common/crearTexto.html', context=contexto)
+
+def buscarUsuario(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        usuario = Usuarios.objects.filter(nombre__icontains=busqueda)
+        contexto = {
+            "usuario": Usuarios
+        }
+        http_response = render(
             request=request,
-            template_name='Common/crearUsuario.html',
-            context={'formulario': formulario}
+            template_name='Common/usuarios.html',
+            context=contexto,
         )
         return http_response
     
-def crearTexto(request):
+def buscarTexto(request):
     if request.method == "POST":
-        formulario = TextosForm(request.POST)
-
-        if formulario.is_valid():
-            data = formulario.cleaned_data
-            titulo = data["titulo"]
-            texto = data["texto"]
-            image = data["image"]
-            autor = data["autor"]
-            texto = Textos(titulo=titulo, texto=texto, image=image, autor=autor)
-            texto.save()  
-
-            url_exitosa = reverse('listaTextos') 
-            return redirect(url_exitosa)
-        
-        else: 
-            formulario = TextosForm()
-            http_response = render(
+        data = request.POST
+        busqueda = data["busqueda"]
+        texto = Textos.objects.filter(nombre__icontains=busqueda)
+        contexto = {
+            "texto": Textos
+        }
+        http_response = render(
             request=request,
-            template_name='Common/crearTexto.html',
-            context={'formulario': formulario}
+            template_name='Common/textos.html',
+            context=contexto,
         )
         return http_response
