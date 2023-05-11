@@ -1,5 +1,5 @@
 from django import forms
-from .models import Usuarios, Textos
+from .models import Usuarios, Textos, Comentarios
 
 class UsuariosForm(forms.ModelForm):
     class Meta:
@@ -11,7 +11,7 @@ class TextosForm(forms.ModelForm):
         model = Textos
         fields = '__all__'
 
-class ComentariosForm(forms.Form):
-    comentario = forms.CharField(max_length=240)
-    autor = forms.ModelChoiceField(queryset=Usuarios.objects.all())
-    texto = forms.ModelChoiceField(queryset=Textos.objects.all())
+class ComentariosForm(forms.ModelForm):
+    class Meta:
+        model = Comentarios
+        fields = '__all__'

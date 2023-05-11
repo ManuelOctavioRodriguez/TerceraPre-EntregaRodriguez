@@ -64,7 +64,7 @@ def crearTexto(request):
     return render(request, 'Common/crearTexto.html', context=contexto)
 
 def crearComentario(request):
-    formulario = ComentariosForm
+    formulario = ComentariosForm()
     if request.method == "POST":
         formulario = ComentariosForm(request.POST)
         if formulario.is_valid():
@@ -77,7 +77,7 @@ def crearComentario(request):
 def buscarUsuario(request):
     if request.method == "POST":
         data = request.POST
-        busqueda = data["busqueda"]
+        busqueda = data["búsqueda"]
         usuario = Usuarios.objects.filter(nombre__icontains=busqueda)
         contexto = {
             "usuarios": usuario
@@ -107,7 +107,7 @@ def buscarTexto(request):
 def buscarComentario(request):
     if request.method == "POST":
         data = request.POST
-        busqueda = data["busqueda"]
+        busqueda = data["búsqueda"]
         comentarios = Comentarios.objects.filter(comentario__icontains=busqueda)
         contexto = {
             "comentarios":comentarios
