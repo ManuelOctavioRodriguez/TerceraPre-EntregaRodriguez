@@ -1,5 +1,5 @@
 from .models import Usuarios, Textos, Comentarios
-from .forms import UsuariosForm, TextosForm
+from .forms import UsuariosForm, TextosForm, ComentariosForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse
