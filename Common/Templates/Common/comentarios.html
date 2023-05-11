@@ -1,0 +1,25 @@
+{% extends "Common/Inicio.html" %}
+{% load static %}
+
+{% block contenido %}
+
+<section>
+    <div>
+      <h1>Textos</h1>
+      <a href="{% url "crearComentario" %}">Comentá</a>
+      <br><br>
+      <form action="{% url 'buscarComentario' %}" method="post">
+        {% csrf_token %}
+        <input type="text" name="búsqueda">
+        <input type="submit" value="Buscar por comentario">
+      </form>
+      <br>
+      <ul>
+      {% for comentario in comentarios %}
+        <li>{{ comentario.comentario }}</li>
+      {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+{% endblock contenido %}

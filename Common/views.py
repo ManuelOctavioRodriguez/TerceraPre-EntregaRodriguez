@@ -30,6 +30,17 @@ def listaTextos(request):
     )
     return http_response
 
+def listaComentarios(request):
+    contexto = {
+        "comentarios": Comentarios.objects.all(),
+    }
+    http_response = render(
+        request=request,
+        template_name='Common/comentarios.html',
+        context=contexto
+    )
+    return http_response
+
 def crearUsuario(request):
     formulario = UsuariosForm()
     if request.method == "POST":
@@ -51,6 +62,17 @@ def crearTexto(request):
             return redirect(url_exitosa)
     contexto = {'formulario': formulario}
     return render(request, 'Common/crearTexto.html', context=contexto)
+
+def crearComentario(request):
+    formulario = ComentariosForm
+    if request.method == "POST":
+        formulario = ComentariosForm(request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            url_exitosa = reverse('listaComentarios')
+            return redirect(url_exitosa)
+    contexto = {'formulario': formulario}
+    return render(request, 'Common/crearComentario.html', context=contexto)
 
 def buscarUsuario(request):
     if request.method == "POST":
@@ -78,6 +100,21 @@ def buscarTexto(request):
         http_response = render(
             request=request,
             template_name='Common/textos.html',
+            context=contexto,
+        )
+        return http_response
+
+def buscarComentario(request):
+    if request.method == "POST":
+        data = request.POST
+        busqueda = data["busqueda"]
+        comentarios = Comentarios.objects.filter(comentario__icontains=busqueda)
+        contexto = {
+            "comentarios":comentarios
+        }
+        http_response = render(
+            request=request,
+            template_name='Common/comentarios.html',
             context=contexto,
         )
         return http_response
