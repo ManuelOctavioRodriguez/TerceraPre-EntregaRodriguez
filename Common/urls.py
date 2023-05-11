@@ -1,11 +1,13 @@
-from django.contrib import admin
 from django.urls import path
-from .views import Index, listaTextos, listaUsuarios, crearUsuario, crearTexto
+from . import views
 
 urlpatterns = [
-    path('', Index, name="Index"),
-    path('usuarios2/', listaUsuarios, name="usuarios"), 
-    path('textos/', listaTextos, name="textos"),
-    path('crearUsuario/', crearUsuario, name="crearUsuario"),
-    path('crearTexto/', crearTexto, name="crearTexto"),
+    path('', views.Index, name='index'),
+    path('usuarios/', views.listaUsuarios, name='listaUsuarios'),
+    path('crearUsuario/', views.crearUsuario, name='crearUsuario'),
+    path('textos/', views.listaTextos, name='listaTextos'),
+    path('crearTexto/', views.crearTexto, name='crearTexto'),
+    path('buscarUsuario/', views.buscarUsuario, name='buscarUsuario'),
+    path('buscarTexto/', views.buscarTexto, name='buscarTexto'),
 ]
+
