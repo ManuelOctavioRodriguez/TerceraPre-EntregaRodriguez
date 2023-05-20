@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h1>Home</h1>
+
+{% for project in projects %}
+
+<div class="col-md-4 p-4">
+    <div class="card bg-white">
+        <div class="card body">
+
+        <h2>{{project.title}}</h2>
+        <p>{{project.description}}</p>
+        <img src="{{project.image.url}}" alt="{{project.title}}" class="img-fluid" />
+
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %} 
