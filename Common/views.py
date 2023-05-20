@@ -2,10 +2,10 @@ from .models import Usuarios, Textos, Comentarios
 from .forms import UsuariosForm, TextosForm, ComentariosForm
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 
 def Index(request):
     contexto = {}
